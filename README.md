@@ -25,19 +25,22 @@ Contract address: https://rinkeby.etherscan.io/address/0xdde0716ca6c05664b39237a
 
 ### Libraries Used with Versions 
 
-web3 version 0.20.6
-Truffle v4.1.14 
-Solidity v0.4.24
-node v8.9.4
-npm v5.6.0
-IPFS was not used 
+ - web3 version 0.20.6
+ - Truffle v4.1.14 
+ - Solidity v0.4.24
+ - node v8.9.4
+ - npm v5.6.0
+ - IPFS was not used 
 
 ### UML Documents 
 
-
+##Activity
 ![activity](./UML/activity.png)
+##Class
 ![class](./UML/class.png)
+##Sequence
 ![sequence](./UML/sequence.png)
+##State
 ![state](./UML/state.png)
 
 
