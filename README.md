@@ -34,13 +34,20 @@ Contract address: https://rinkeby.etherscan.io/address/0xdde0716ca6c05664b39237a
 
 ### UML Documents 
 
-##Activity
+## Activity
+
 ![activity](./UML/activity.png)
-##Class
+
+## Class
+
 ![class](./UML/class.png)
-##Sequence
+
+## Sequence
+
 ![sequence](./UML/sequence.png)
-##State
+
+## State
+
 ![state](./UML/state.png)
 
 
