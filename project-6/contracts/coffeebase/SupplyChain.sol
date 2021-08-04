@@ -189,7 +189,7 @@ contract SupplyChain is Ownable, ConsumerRole, DistributorRole, FarmerRole, Reta
   // Define a function 'processtItem' that allows a farmer to mark an item 'Processed'
   // Call modifier to check if upc has passed previous supply chain stage
   // Call modifier to verify caller of this function
-  function processItem(uint _upc) public verifyCaller(msg.sender) harvested(_upc)  
+  function processItem(uint _upc) public verifyCaller(items[_upc].ownerID) harvested(_upc)  
   {
     // Update the appropriate fields
     items[_upc].itemState = State.Processed;
@@ -201,7 +201,7 @@ contract SupplyChain is Ownable, ConsumerRole, DistributorRole, FarmerRole, Reta
   // Define a function 'packItem' that allows a farmer to mark an item 'Packed'
   // Call modifier to check if upc has passed previous supply chain stage
   // Call modifier to verify caller of this function
-  function packItem(uint _upc) public verifyCaller(msg.sender) processed(_upc)  
+  function packItem(uint _upc) public verifyCaller(items[_upc].ownerID) processed(_upc)  
   {
     // Update the appropriate fields
     items[_upc].itemState = State.Packed; 
@@ -214,7 +214,7 @@ contract SupplyChain is Ownable, ConsumerRole, DistributorRole, FarmerRole, Reta
   // Define a function 'sellItem' that allows a farmer to mark an item 'ForSale'
   // Call modifier to check if upc has passed previous supply chain stage
   // Call modifier to verify caller of this function
-  function sellItem(uint _upc, uint _price) public verifyCaller(msg.sender) packed(_upc)
+  function sellItem(uint _upc, uint _price) public verifyCaller(items[_upc].ownerID) packed(_upc)
   {
     // Update the appropriate fields
     items[_upc].itemState = State.ForSale;
