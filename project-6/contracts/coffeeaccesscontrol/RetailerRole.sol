@@ -5,12 +5,12 @@ import "./Roles.sol";
 
 // Define a contract 'RetailerRole' to manage this role - add, remove, check
 contract RetailerRole {
+  using Roles for Roles.Role;
 
   // Define 2 events, one for Adding, and other for Removing
-  event RetailerAdded(address _account);
-  event RetailerRemoved(address _account);
-  
- 
+  event RetailerAdded(address indexed account);
+  event RetailerRemoved(address indexed account);
+
   // Define a struct 'retailers' by inheriting from 'Roles' library, struct Role
   Roles.Role private retailers;
 
@@ -21,13 +21,13 @@ contract RetailerRole {
 
   // Define a modifier that checks to see if msg.sender has the appropriate role
   modifier onlyRetailer() {
-    require(isRetailer(msg.sender), "Only Retailer allowed to perform this operation");
+    require(isRetailer(msg.sender));
     _;
   }
 
   // Define a function 'isRetailer' to check this role
   function isRetailer(address account) public view returns (bool) {
-    return Roles.has(retailers, msg.sender);
+    return retailers.has(account);
   }
 
   // Define a function 'addRetailer' that adds this role
@@ -42,14 +42,13 @@ contract RetailerRole {
 
   // Define an internal function '_addRetailer' to add this role, called by 'addRetailer'
   function _addRetailer(address account) internal {
-    Roles.add(retailers,account);
+    retailers.add(account);
     emit RetailerAdded(account);
   }
 
   // Define an internal function '_removeRetailer' to remove this role, called by 'removeRetailer'
   function _removeRetailer(address account) internal {
-    Roles.remove(retailers, account); 
+    retailers.remove(account);
     emit RetailerRemoved(account);
   }
 }
-
